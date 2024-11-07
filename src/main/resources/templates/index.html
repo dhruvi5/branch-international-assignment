@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Messages</h1>
+
+    <!-- Form to create new message -->
+    <form th:action="@{/api/messages}" method="post">
+        <div class="form-group">
+            <label for="content">Message Content</label>
+            <input type="text" id="content" name="content" class="form-control" required placeholder="Enter your message">
+        </div>
+        <div class="form-group">
+            <label for="customerId">Customer ID</label>
+            <input type="number" id="customerId" name="customerId" class="form-control" required placeholder="Enter Customer ID">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Message</button>
+    </form>
+
+    <h2 class="mt-5">Urgent Messages</h2>
+    <div id="urgentMessages">
+        <ul class="list-group" th:each="message : ${urgentMessages}">
+            <li class="list-group-item">
+                <strong th:text="${message.content}"></strong> -
+                <span th:text="${message.timestamp}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Include jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

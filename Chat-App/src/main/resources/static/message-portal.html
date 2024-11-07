@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Message Portal</title>
+</head>
+<body>
+<h2>Send a Message</h2>
+<form action="/api/messages/send" method="post">
+    <label>Customer ID:</label>
+    <input type="text" name="customerId" required>
+    <label>Message Content:</label>
+    <textarea name="content" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
+</body>
+</html>
